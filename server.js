@@ -6,6 +6,7 @@ const server = net.createServer((socket) => {
   console.log(`Client connected from: ${socket.remoteAddress}:${socket.remotePort}`);
   socket.on('data' , (data) => {
     console.log(data);
+    socket.write(data); // 'data' 이벤트로 받은 data를 같은 socket에게 쓰기
   })
   
   socket.on('end', () => {
